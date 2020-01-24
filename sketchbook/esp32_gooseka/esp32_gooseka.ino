@@ -28,9 +28,10 @@ void control_task(void* param) {
 // 2. Send telemetry via LoRa
 void telemetry_task(void* param) {
     while(1){
-        //Read telemetry from ESC
+        // Read telemetry from ESC
+        // Do Stuff
 
-        //Send LoRa packet to receiver
+        // Send LoRa packet to receiver
         LoRa.beginPacket();
         LoRa.write(buffer, length); // MAX 255 bytes
         LoRa.endPacket();
@@ -47,14 +48,25 @@ void onReceive(int packetSize) {
 // Init LoRa comms
 // Init telemetry and control tasks
 void setup() {
-    // ESC
+    //initialize Serial Monitor
+    Serial.begin(115200);
+    Serian.println("Starting...");
+
+    // ESC read init
+    // Do stuff
+
+    // ESC PWM init
     // Do stuff
     
     //SPI LoRa pins
     SPI.begin(SCK, MISO, MOSI, SS);
     //setup LoRa transceiver module
     LoRa.setPins(SS, RST, DIO0);
-    LoRa.begin(BAND);
+    if(!LoRa.begin(BAND)) {
+        println("LoRa init error.");
+        while(1);
+    }
+    Serial.println("LoRa Initializing OK!");
     //Puts the radio in continuous receive mode
     LoRa.receive();
     LoRa.onReceive(onReceive);
