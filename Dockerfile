@@ -7,6 +7,7 @@ RUN curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/inst
 ADD config/arduino-cli.yaml /root/.arduino15/arduino-cli.yaml
 RUN /arduino/bin/arduino-cli core update-index 
 RUN /arduino/bin/arduino-cli core install esp32:esp32
-RUN mkdir -p /sketchbook
+ADD entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh && mkdir -p /sketchbook
 WORKDIR /sketchbook
-ENTRYPOINT ["/arduino/bin/arduino-cli"]
+ENTRYPOINT ["/entrypoint.sh"]
