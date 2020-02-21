@@ -1,6 +1,6 @@
 FROM debian:stretch-slim
 #RUN apk upgrade --no-cache && apk add --no-cache curl libstdc++
-RUN apt-get update && apt-get upgrade && apt-get install -y curl python python-serial
+RUN apt-get update && apt-get upgrade -y && apt-get install -y curl python python-serial
 RUN mkdir -p /arduino
 WORKDIR /arduino
 RUN curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | sh
