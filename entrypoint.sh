@@ -6,7 +6,7 @@ shift
 BOARD=$1
 shift
 
-ln -s /sketchbook/workspace /sketchbook/$SKETCH
+ln -s /github/workspace /sketchbook/$SKETCH
 
 if [ "$ACTION" = "compile" ]; then
 	LIBRARIES=$@
