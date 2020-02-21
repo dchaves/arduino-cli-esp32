@@ -6,6 +6,7 @@ shift
 BOARD=$1
 shift
 
+cd /sketchbook
 ln -s /github/workspace /sketchbook/$SKETCH
 
 if [ "$ACTION" = "compile" ]; then
