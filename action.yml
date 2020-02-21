@@ -1,10 +1,6 @@
 name: 'Arduino ESP32 builder'
 description: 'Build ESP32 source code using the arduino environment'
 inputs:
-  action:
-    description: 'Action to be executed with the container (compile or upload)'
-    required: true
-    default: 'compile'
   sketch: 
     description: 'Name of the sketch to build'
     required: true
