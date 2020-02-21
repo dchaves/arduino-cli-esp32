@@ -1,4 +1,5 @@
 #!/bin/sh -l
+HOME=/root
 ACTION=$1
 shift
 SKETCH=$1
