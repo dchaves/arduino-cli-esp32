@@ -1,8 +1,15 @@
 name: 'Arduino ESP32 builder'
 description: 'Build ESP32 source code using the arduino environment'
 inputs:
+  action:
+    description: 'Action to run with this container (compile/upload)'
+    required: true
+    default: 'compile'
   sketch: 
     description: 'Name of the sketch to build'
+    required: true
+  board:
+    description: 'Target device board for the binaries'
     required: true
   libraries: 
     description: 'List of additional Arduino libraries needed to build the sketch'
@@ -11,5 +18,7 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
+    - ${{ inputs.action }}
     - ${{ inputs.sketch }}
+    - ${{ inputs.board }}
     - ${{ inputs.libraries }}
